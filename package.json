@@ -1,0 +1,76 @@
+{
+  "name": "@local/dsh-device-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DSH 插件：在右侧边栏登记最多 10 台设备，通过 SSH 采集 CPU / 内存 / 磁盘 / 负载 / 温度等运行指标并做阈值告警。",
+  "license": "MIT",
+  "author": "dsh-device-monitor contributors",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "device-monitor",
+    "ssh",
+    "monitoring",
+    "observability",
+    "sidebar"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzlzh/dsh-device-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zzlzh/dsh-device-monitor/issues"
+  },
+  "homepage": "https://github.com/zzlzh/dsh-device-monitor#readme",
+  "meta": {
+    "title": "设备监管",
+    "description": "侧边栏设备面板：SSH 连接最多 10 台设备，实时采集运行指标与阈值告警。"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "src/**/*.js",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "test": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/run-all.ps1",
+    "test:mutations": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/run-mutations.ps1",
+    "pack:dist": "node tools/pack-dist.mjs"
+  },
+  "dependencies": {
+    "ssh2": "^1.17.0",
+    "ws": "^8.18.0"
+  },
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "dsh-better-sidebar"
+      ]
+    }
+  }
+}

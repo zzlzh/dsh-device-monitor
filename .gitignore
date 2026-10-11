@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output and packed artifacts.
+# `npm run pack:dist` writes a tarball here; it is reproduced from source on
+# every run, so it is never committed. See README「分享到另一台电脑」.
+dist/
+
+# Mutation-cycle scratch. `tools/run-mutations.ps1` edits a target file in
+# place and restores it from the matching `.pristine` copy; if a run is
+# interrupted, this backup is what is left behind. The `.pristine` files
+# themselves ARE committed — they are the baseline the mutation driver reads.
+*.mutation.bak
+
+# Local probes and captures.
+# `tools/_probe/` holds dumps of DSH bundle files taken on one machine to answer
+# one question, and `tools/_dh.js` is a copy of the desktop-host boot module.
+# Both are machine-specific, large (1.3 MB+), and referenced by nothing in the
+# repo. They are scratch, not source.
+tools/_probe/
+tools/_dh.js
+
+# Local run output
+*.log
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

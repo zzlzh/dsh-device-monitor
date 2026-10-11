@@ -1,0 +1,4 @@
+{
+  "title": "Device Monitor",
+  "description": "Sidebar device panel: connect up to 10 devices over SSH and collect live metrics with threshold alerts."
+}

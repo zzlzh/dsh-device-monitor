@@ -1,0 +1,24 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# The source in this repo is tab-indented throughout; keep it that way rather
+# than letting an editor silently mix in spaces.
+indent_style = tab
+indent_size = 4
+
+[*.{json,yml,yaml,md}]
+indent_style = space
+indent_size = 2
+
+[*.ps1]
+end_of_line = crlf
+
+# Byte-exact mutation baselines: never touch these.
+[*.pristine]
+insert_final_newline = false
+trim_trailing_whitespace = false

@@ -1,0 +1,19 @@
+# Normalize line endings on commit so a Windows-authored repo does not show
+# whole-file diffs on Linux/macOS checkouts.
+* text=auto eol=lf
+
+# Windows-only tooling. These genuinely need CRLF-compatible handling and are
+# excluded from the eol=lf rule above.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary
+*.tgz binary
+*.png binary
+*.jpg binary
+
+# The mutation baselines are BYTE-EXACT copies of their source files. Any eol
+# translation here silently breaks `apply-mutation.mjs check`, which matches
+# anchors literally — including their newlines.
+*.pristine -text
